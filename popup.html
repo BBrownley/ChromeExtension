@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+
+
+	<div class="plugin-name">
+		<p>Assignment tracker</p>
+	</div>
+
+	<form action="">
+		<input type="text" placeholder="Assignment name">
+		<div class="time">
+			<input type="number" placeholder="Hours" class="time__hours" min="0">
+			<input type="number" placeholder="Minutes" class="time__minutes" min="0" max="59">
+		</div>
+	</form>
+
+	<button id="addButton">Add assignment</button>
+
+	<div class="upcoming-assignments">
+		<p>Upcoming assignments:</p>
+		<ul>
+			<li class="assignment-li" id="assignment-1">1</li>
+			<li class="assignment-li" id="assignment-2">2</li>
+			<li class="assignment-li" id="assignment-3">3</li>
+		</ul>
+	</div>
+
+</body>
+
+<script type="text/javascript" src="script.js"></script>
+
+</html>
