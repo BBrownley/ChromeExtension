@@ -1,37 +1,68 @@
-const countDisplay = document.getElementById("count-display");
 const popupAssignmentItems = Array.from(document.getElementsByClassName("assignment-li"));
 
 const addButton = document.getElementById("addButton");
 
-// let assignmentItems = [
-//   {
-//     description: "Item 1",
-//     time: "30m"
-//   },
-//   {
-//     description: "Item 2",
-//     time: "1h"
-//   },
-//   {
-//     description: "Item 3",
-//     time: "45s"
-//   }
-// ];
+let inputs =
+{
+  name: document.getElementById("assignmentNameInput"),
+  hour: document.getElementById("assignmentHoursInput"),
+  minute: document.getElementById("assignmentMinutesInput")
+};
 
-let assignmentItems = [];
+let assignmentItems = []; //To be filled with assignmentItem objects
 
-let count = 0;
+addButton.addEventListener("click", function()
+{
+  if (inputs.name.value.length > 0 && (inputs.hour.value.length > 0 || inputs.minute.value.length > 0))
+  {
+    let totalTime;
+    if (inputs.hour.value.length > 0 && inputs.minute.value.length > 0)
+    {
+      totalTime = `${inputs.hour.value}h${inputs.minute.value}m`;
+    }
+    else if (inputs.minute.value.length == 0 && inputs.hour.value.length > 0)
+    {
+      totalTime = `${inputs.hour.value}h`;
+    }
+    else //Only minutes field was filled
+    {
+      totalTime = `${inputs.minute.value}m`;
+    }
+    assignmentItems.push({
+      description: inputs.name.value,
+      time: totalTime
+    });
+    clearFields();
+    updateList();
 
-
-
-addButton.addEventListener("click", function() {
-  if ()
+  }
 });
 
-//<i class="fa fa-clock-o"></i>
+function createAssignment()
+{
 
-function updateList() {
-  for (let i = 0; i < popupAssignmentItems.length; i++) {
+}
+
+function updateList()
+{
+  for (let i = 0; i < popupAssignmentItems.length; i++)
+  {
     popupAssignmentItems[i].innerHTML = `<h4>${i+1}) ${assignmentItems[i].description} <i class="fa fa-clock-o"></i>${assignmentItems[i].time}</h4>`;
   }
+}
+
+function sortList()
+{
+
+}
+
+function clearFields()
+{
+  console.log("clearFields");
+  for (var property in inputs) {
+    inputs[property].value = "";
+  }
+  // inputs.name.value = "";
+  // inputs.hour.value = "";
+  // inputs.minute.value = "";
 }
